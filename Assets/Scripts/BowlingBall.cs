@@ -37,9 +37,7 @@ public class BowlingBall : MonoBehaviour {
         rigidBody.velocity = Vector3.zero;
         rigidBody.angularVelocity = Vector3.zero;
         rigidBody.useGravity = false;
-        
-
-
+        transform.rotation = Quaternion.identity;
     }
 
 
