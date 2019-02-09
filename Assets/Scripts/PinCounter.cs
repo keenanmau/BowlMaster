@@ -12,7 +12,7 @@ public class PinCounter : MonoBehaviour {
     private GameManager gameManager;
 
     private int lastStandingCount = -1;
-    private float settlingTime = 3.0f;
+    private float settlingTime = 4.0f;
     private int lastSettledCount = 10;
     private float lastChangeTime;
 
@@ -46,20 +46,20 @@ public class PinCounter : MonoBehaviour {
 
     public void Reset() {
         lastSettledCount = 10;
+        //lastStandingCount = -1; //why the fuck does moving this line to pinshavesettled fix the bug???
     }
 
     void PinsHaveSettled() {
-        int pinfall = lastSettledCount - CountStanding();
-        lastSettledCount = CountStanding();
-
+        int countStanding = CountStanding();
+        int pinfall = lastSettledCount - countStanding;
+        lastSettledCount = countStanding;
+        //Debug.Log("Settling Time:" + settlingTime.ToString());
         gameManager.Bowl(pinfall);
-
-        lastStandingCount = -1;
         standingDisplay.color = Color.green;
         ballOutOfPlay = false;
-
- 
+        lastStandingCount = -1;
     }
+
     int CountStanding() {
         int standing = 0;
         foreach (Pin pin in GameObject.FindObjectsOfType<Pin>()) {

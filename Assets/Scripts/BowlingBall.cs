@@ -31,6 +31,7 @@ public class BowlingBall : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 	}
+
     public void Reset() {
         inPlay = false;
         transform.position = initialPosition;
@@ -38,7 +39,10 @@ public class BowlingBall : MonoBehaviour {
         rigidBody.angularVelocity = Vector3.zero;
         rigidBody.useGravity = false;
         transform.rotation = Quaternion.identity;
+        //Debug.Log("Ball Position Reset");
     }
+
+
 
 
 

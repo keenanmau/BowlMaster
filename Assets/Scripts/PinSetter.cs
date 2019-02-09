@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PinSetter : MonoBehaviour {
     public GameObject pinSet;
-    private ActionMaster actionMaster;
     private Animator animator;
     private PinCounter pinCounter;
 
@@ -19,10 +18,6 @@ public class PinSetter : MonoBehaviour {
 	void Update () {
         
 	}
-
-
-
-
 
     void RaisePins() {
         foreach (Pin pin in GameObject.FindObjectsOfType<Pin>()) {
@@ -42,6 +37,7 @@ public class PinSetter : MonoBehaviour {
         GameObject newPins = Instantiate(pinSet, new Vector3(0, 45, 1896), Quaternion.identity);
         foreach(Transform child in newPins.transform) {
         }
+        pinCounter.Reset();
     }
 
     public void PerformAction(ActionMaster.Action action) {
@@ -57,10 +53,5 @@ public class PinSetter : MonoBehaviour {
 
         }
     }
-
     
-
- 
-
-
 }
